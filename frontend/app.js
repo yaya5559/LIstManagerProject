@@ -28,16 +28,20 @@ const update = document.getElementById("Update")
 })
 
 
-update.addEventListener('click', async function (e) {
-     e.preventDefault();
-     e.stopPropagation();
+update.addEventListener('click', async function (event) {
+     event.preventDefault();
+     
+    
 
     const values = textArea.value;
     const lines = values.split("\n")
 
-    console.log(lines)
-    
-    client.post("/write", {content: lines});
+    try{
+        const response = await client.post("/write", {content: lines});
+        console.log("Post success:", response);
+    }catch(error){
+        console.error("Error posting data:", error);
+    }
     
 })
 

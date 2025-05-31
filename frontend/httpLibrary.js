@@ -23,7 +23,7 @@ class httpLibrary {
             if(!response.ok){
                 throw new Error(`Error ${response.ok}`)
             }
-            return response.json()
+            return await response.json()
         }catch(error){
             throw new Error(`Error ${error}`)
         }
